@@ -14,6 +14,7 @@ const Hero = () => {
             <p className="hero__subtitle">Streaming your rental experience with our effortless booking process </p>    
         
         <CustomButton
+            btnType='submit'
             title = {'Explore Cars'}
             containerStyles="bg-primary-blue text-white rounded-full mt-10"
             handleClick = {handleScroll}
