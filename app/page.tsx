@@ -2,9 +2,20 @@ import { Hero } from "@/components";
 import Image from "next/image";
 import { CustomFilter, SearchBar,CarCard } from "@/components";
 import { fetchCars } from "@/API";
+import { manufacturers } from "@/constants";
+import { HomeProps } from "@/types";
 
-export default async function Home() {
-  const cars = await fetchCars();
+export default async function Home({searchParams}: HomeProps) {
+  const cars = await fetchCars({
+    manufacturer: searchParams.manufacturer || '',
+    model: searchParams.model  || '',
+    limit: searchParams.limit || 10,
+    fuel: searchParams.fuel || '',
+    year: searchParams.year || 2000
+  });
+  
+  
+  
   console.log('Cars', cars.length);
 
 
