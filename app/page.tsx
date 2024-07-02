@@ -2,10 +2,12 @@ import { Hero } from "@/components";
 import Image from "next/image";
 import { CustomFilter, SearchBar,CarCard } from "@/components";
 import { fetchCars } from "@/API";
-import { manufacturers } from "@/constants";
+import { manufacturers, fuels, yearsOfProduction } from "@/constants";
 import { HomeProps } from "@/types";
 
 export default async function Home({searchParams}: HomeProps) {
+
+  
   const cars = await fetchCars({
     manufacturer: searchParams.manufacturer || '',
     model: searchParams.model  || '',
@@ -14,8 +16,8 @@ export default async function Home({searchParams}: HomeProps) {
     year: searchParams.year || 2000
   });
   
-  
-  
+  console.log('manufacturer 02 ', searchParams.manufacturer)
+  console.log('Model 02', searchParams.model)
   console.log('Cars', cars.length);
 
 
@@ -32,7 +34,8 @@ export default async function Home({searchParams}: HomeProps) {
         <div className="home__filters">
           <SearchBar />
           <div className="home__filter-container">
-            <CustomFilter />
+            <CustomFilter title={"fuel"} options={fuels}/>
+            <CustomFilter title={"year"} options={yearsOfProduction}/>
           </div>
         </div>
 

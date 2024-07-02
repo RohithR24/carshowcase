@@ -28,7 +28,7 @@ const SearchBar = () => {
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (manufacturer === "" && model === "") {
+    if (manufacturer.trim() === "" && model.trim() === "") {
       return alert("Please fill in the search bar");
     }
 
@@ -37,7 +37,9 @@ const SearchBar = () => {
 
   const updateSearchParams = (model: string, manufacturer: string) => {
     const searchParams = new URLSearchParams(window.location.search);
-
+    
+    console.log('Model 01: ', model)
+    console.log('manufacturer  01: ', manufacturer)
     if (model) {
       searchParams.set("model", model);
     } else {
@@ -45,7 +47,7 @@ const SearchBar = () => {
     }
 
 
-    if (model) {
+    if (manufacturer) {
       searchParams.set("manufacturer", manufacturer);
     } else {
       searchParams.delete("manufacturer");
@@ -75,12 +77,12 @@ const SearchBar = () => {
           alt="car model"
         />
         <input
-          type="text"
-          name="model"
+          type='text'
+          name='model'
           value={model}
           onChange={(e) => setModel(e.target.value)}
-          placeholder="Model"
-          className="searchbar__input"
+          placeholder='Tiguan...'
+          className='searchbar__input'
         />
 
         <SearchButton otherClasses={"sm:hidden"} />
