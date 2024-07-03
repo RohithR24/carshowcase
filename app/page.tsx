@@ -1,6 +1,6 @@
 import { Hero } from "@/components";
 import Image from "next/image";
-import { CustomFilter, SearchBar,CarCard } from "@/components";
+import { CustomFilter, SearchBar,CarCard, ShowMore } from "@/components";
 import { fetchCars } from "@/API";
 import { manufacturers, fuels, yearsOfProduction } from "@/constants";
 import { HomeProps } from "@/types";
@@ -16,11 +16,6 @@ export default async function Home({searchParams}: HomeProps) {
     year: searchParams.year || 2000
   });
   
-  console.log('manufacturer 02 ', searchParams.manufacturer)
-  console.log('Model 02', searchParams.model)
-  console.log('Cars', cars.length);
-
-
   const isDataEmpty = !Array.isArray(cars) || cars.length < 1 || !cars;
   return (
     <main className="overflow-hidden">
@@ -43,8 +38,11 @@ export default async function Home({searchParams}: HomeProps) {
         <section>
             <div className="home__cars-wrapper">
               {cars?.map((car) => (<CarCard  car= {car}/>))}
-
             </div>
+            <ShowMore 
+              pageNumber = {(searchParams.limit || 10)/10}
+              isNext = {(searchParams.limit || 10) > cars.length}
+            />
         </section> : 
         <div> 
           <h4>

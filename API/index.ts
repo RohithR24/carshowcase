@@ -2,7 +2,7 @@ import { FilterProps } from "@/types";
 
 // Returns the response from the API
 export async function fetchCars(filters: FilterProps) {
-  const { model, year, fuel, manufacturer } = filters;
+  const { model, year, fuel, manufacturer, limit } = filters;
 
   console.log('Test: 01', model);
   const Url = new URL("https://cars-by-api-ninjas.p.rapidapi.com/v1/cars");
@@ -10,6 +10,8 @@ export async function fetchCars(filters: FilterProps) {
   Url.searchParams.append("make", manufacturer);
   Url.searchParams.append("year", `${year}`);
   Url.searchParams.append("fuel_type", fuel);
+  Url.searchParams.append("limit", String(limit));
+
 
   // const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=${model}&make=${manufacturer}`;
 

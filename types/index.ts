@@ -42,7 +42,7 @@ export interface FilterProps{
     model: string,
     limit: number,
     fuel: string,
-    year: number
+    year: number,
 }
 
 export interface HomeProps {
@@ -56,4 +56,9 @@ export interface HomeProps {
 export interface CustomFilterProps{
     title: string;
     options: OptionProps[];
+}
+
+export interface ShowMoreProps{
+    pageNumber : number;
+    isNext :boolean;
 }

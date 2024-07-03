@@ -3,10 +3,8 @@ import React from "react";
 import { useState } from "react";
 
 import { SearchManufacturer } from "@/components";
-import { manufacturers } from "@/constants";
 import Image from "next/image";
-import {useRouter} from 'next/navigation';
-
+import { useRouter } from "next/navigation";
 
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => {
   return (
@@ -32,20 +30,16 @@ const SearchBar = () => {
       return alert("Please fill in the search bar");
     }
 
-    updateSearchParams( model.toLowerCase(),manufacturer.toLowerCase())
+    updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
   };
 
   const updateSearchParams = (model: string, manufacturer: string) => {
     const searchParams = new URLSearchParams(window.location.search);
-    
-    console.log('Model 01: ', model)
-    console.log('manufacturer  01: ', manufacturer)
     if (model) {
       searchParams.set("model", model);
     } else {
       searchParams.delete("model");
     }
-
 
     if (manufacturer) {
       searchParams.set("manufacturer", manufacturer);
@@ -53,9 +47,11 @@ const SearchBar = () => {
       searchParams.delete("manufacturer");
     }
 
-    const newPathName = `${window.location.pathname}?${searchParams.toString()}`
+    const newPathName = `${
+      window.location.pathname
+    }?${searchParams.toString()}`;
 
-    router.push(newPathName)
+    router.push(newPathName);
   };
 
   return (
@@ -77,12 +73,12 @@ const SearchBar = () => {
           alt="car model"
         />
         <input
-          type='text'
-          name='model'
+          type="text"
+          name="model"
           value={model}
           onChange={(e) => setModel(e.target.value)}
-          placeholder='Tiguan...'
-          className='searchbar__input'
+          placeholder="Tiguan..."
+          className="searchbar__input"
         />
 
         <SearchButton otherClasses={"sm:hidden"} />
