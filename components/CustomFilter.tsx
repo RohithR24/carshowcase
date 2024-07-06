@@ -11,13 +11,8 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
   const [selected, setSelected] = useState(options[0]);
 
   const handleUpdateParams = (e: { title: string; value: string }) => {
-    let newPathName = "";
-    const searchParams = new URLSearchParams(window.location.search);
-    searchParams.set(title, e.value.toLowerCase());
-
-    newPathName = `${window.location.pathname}? ${searchParams.toString()}`;
-    // const newPathName = updateSearchParams(title.toLowerCase(),  e.value.toLowerCase())
-    router.push(newPathName);
+    const newPathName = updateSearchParams(title.toLowerCase(),  e.value.toLowerCase())
+    router.push(newPathName, {scroll: false});
   }
 
   return (
