@@ -1,4 +1,5 @@
 import { MouseEventHandler } from "react";
+import { Dispatch, SetStateAction } from 'react';
 
 export interface CustomButtonProps{
     title: string;
@@ -9,11 +10,6 @@ export interface CustomButtonProps{
     textStyle?:  string;
     rightIcon?: string;
     isDisabled?: boolean;
-}
-
-export interface SearchManufacturerProps{
-    manufacturer: string;
-    setManufacturer : (manufacturer: string) => void;
 }
 
 export interface CarsProps{
@@ -67,3 +63,4 @@ export interface ShowMoreProps{
 export interface CarCardProps {
     car: CarsProps;
   }
+
