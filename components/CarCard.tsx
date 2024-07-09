@@ -1,15 +1,13 @@
 "use client"
 import React from "react";
-import { CarsProps } from "@/types";
+import { CarCardProps } from "@/types";
 import { useState } from "react";
 import { calculateCarRent } from "@/Utility";
 import Image from "next/image";
 import CustomButton from "./CustomButton";
 import CarDetails from "./CarDetails";
 
-interface CarCardProps {
-  car: CarsProps;
-}
+
 const CarCard = ({ car }: CarCardProps) => {
   const { city_mpg, year, make, model, transmission, drive } = car;
   const carRent = calculateCarRent(city_mpg, year);

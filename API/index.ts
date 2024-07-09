@@ -18,8 +18,8 @@ export async function fetchCars(filters: FilterProps) {
   // console.log("URL 1", url);
   // console.log("URL 2", Url);
 
-  const apiKey = process.env.X_RAPIDAPI_KEY || "";
-  const apiHost = process.env.X_RAPIDAPI_HOST || "";
+  const apiKey = process.env.NEXT_PUBLIC_X_RAPIDAPI_KEY || "";
+  const apiHost = process.env.NEXT_PUBLIC_X_RAPIDAPI_HOST || "";
 
   const options = {
     method: "GET",
@@ -32,8 +32,7 @@ export async function fetchCars(filters: FilterProps) {
   try {
     const response = await fetch(Url, options);
     const result = await response.json();
-    console.log('Test: 01', Url);
-    console.log('Test: 03', result);
+
 
     return result;
   } catch (error) {

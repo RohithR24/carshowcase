@@ -20,7 +20,6 @@ export default function Home() {
   const getCars = async () => {
     setLoading(true);
     try {
-      if(!loading){
         const carsData = await fetchCars({
           manufacturer: manufacturer || "",
           model: model || "",
@@ -30,7 +29,6 @@ export default function Home() {
         });
         console.log('Rohith', carsData);
         setCars(carsData);
-      }
       
     } catch (error) {
       console.log("Error: ", error);
@@ -62,13 +60,13 @@ export default function Home() {
         {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {cars?.map((car) => (
-                <CarCard car={car} />
+              {cars?.map((car, index) => (
+                <CarCard  key={index} car={car} />
               ))}
             </div>
             <ShowMore
               pageNumber={(limit || 10) / 10}
-              isNext={(limit || 10) > cars.length}
+              isNext={(limit || 10) > cars.length}   
             />
           </section>
         ) : (

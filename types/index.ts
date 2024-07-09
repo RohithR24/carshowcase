@@ -17,6 +17,7 @@ export interface SearchManufacturerProps{
 }
 
 export interface CarsProps{
+    id: string;
     "city_mpg":  number;
     "class": string;
     "combination_mpg":  number;
@@ -62,3 +63,7 @@ export interface ShowMoreProps{
     pageNumber : number;
     isNext :boolean;
 }
+
+export interface CarCardProps {
+    car: CarsProps;
+  }
